@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+      <record id="work_order_picking_views" model='ir.ui.view'>
+          <field name='name'>work_order_picking_form</field>
+          <field name="model">work.order</field>
+          <field name="inherit_id" ref="work_order_request.work_order_view"/>
+          <field name="arch" type="xml">
+              <xpath expr="//sheet/div[hasclass('oe_edit_only')]" position="before">
+                  <div class="oe_button_box" name="button_box">
+                      <field name="picking_ids" invisible="1" />
+                      <button type="object"
+                            name="action_view_picking"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                            attrs="{'invisible': [('picking_count', '=', 0)]}"
+                            groups="stock.group_stock_user"
+                        >
+                            <field
+                                name="picking_count"
+                                widget="statinfo"
+                                string="Transfers"
+                            />
+                        </button>
+                  </div>
+              </xpath>
+              <xpath expr="//header/button[@name='button_approve']" position="after">
+                  <button name="action_confirm"
+                    string="Confirm"
+                    type="object"
+                    class="oe_highlight"
+                    states="open"
+                  />
+              </xpath>
+              <xpath expr="//notebook/page[@name='product_line']/field[@name='line_ids']/tree/field[@name='product_uom_qty']" position='after'>
+                  <field name='qty_done' string="Qté reçue"/>
+              </xpath>
+          </field>
+      </record>
+  </data>
+</odoo>
