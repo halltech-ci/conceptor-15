@@ -31,7 +31,7 @@
         'views/hr_attendance_sheet_views.xml',
         'views/hr_attendance_views.xml',
         'views/hr_department_views.xml',
-        'views/hr_employee_views',
+        'views/hr_employee_views.xml',
         'views/res_company.xml',
         'views/res_config_settings.xml',
     ],
