@@ -26,6 +26,7 @@
     'data': [
         'security/security_group.xml',
         'security/ir.model.access.csv',
+        'data/cron.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/hr_attendance_sheet_views.xml',
@@ -34,6 +35,7 @@
         'views/hr_employee_views.xml',
         'views/res_company.xml',
         'views/res_config_settings.xml',
+        'data/mail_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
