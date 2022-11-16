@@ -28,6 +28,12 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/hr_attendance_sheet_views.xml',
+        'views/hr_attendance_views.xml',
+        'views/hr_department_views.xml',
+        'views/hr_employee_views',
+        'views/res_company.xml',
+        'views/res_config_settings.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
