@@ -248,7 +248,7 @@
     <menuitem
         id="hr_attendance_sheet_manager_menu"
         name="Attendance Sheets"
-        parent="hr_attendance.menu_hr_attendance_manage_attendances"
+        parent="hr_attendance.menu_hr_attendance_attendances_overview"
         action="hr_attendance_sheet_manager_action"
         sequence="9"
         groups="hr_attendance.group_hr_attendance_manager"
