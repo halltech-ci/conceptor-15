@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+      
+    <record model="ir.ui.view" id="work_order_view">
+      <field name="name">work_order_view</field>
+      <field name="model">work.order</field>
+      <field name="arch" type="xml">
+          <form string="Product Request">
+              <header>
+                  <button name="button_to_approve" string="Request Approval" type="object" class="oe_highlight" states="draft"/>
+                  <button name="button_approve" string="Approve" type="object" class="oe_highlight" states="to_approve"/>
+                  <button name = "set_to_draft" string="remettre en brouillon" type="object" class="oe_highlight" states="open"/>
+                  <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,open,confirm,done,close,cancel" statusbar_colors='{"done":"blue"}'/>                 
+              </header>
+              <sheet>
+                  <div class="oe_edit_only">
+                     <label for="name" class="oe_inline" />
+                  </div>
+                  <h1>
+                    <field name="name" class="oe_inline"/>
+                  </h1>
+                  
+                  <group>
+                      <group>
+                          <field name='requested_by' options="{'no_create': True}"/>
+                          <field name="project_id" options="{'no_create': True}" attrs="{'readonly': [('state', 'not in', ['draft', 'to_approve'])]}"/>
+                      </group>
+                      <group>
+                          <field name="date" readonly='True'/>
+                          <field name="company_id" options="{'no_create': True}"/>
+                          <field name="task_id" options="{'no_create': True}" attrs="{'readonly': [('state', 'not in', ['draft', 'to_approve'])]}"/>
+                      </group>
+              </group>
+              <notebook>
+                  <page name="product_line" string='Product lines'>
+                      <field name="line_ids">
+                          <tree editable="bottom" >
+                              <field name='request_state' invisible='1'/>
+                              <field name='product_id' options="{'no_create': True}" attrs="{'readonly': [('request_state', 'not in', ('draft'))]}"/>
+                              <field name='product_uom_qty' string='Qté demandée' attrs="{'readonly': [('request_state', 'not in', ['draft'])]}"/>
+                              <field name='qty_in_progress' string='Qté utilisée' attrs="{'readonly': [('request_state', 'not in', ('done'))]}"/>
+                              <field name='product_uom_id' string="Unit" readonly='True'/>
+                              <field name="project_id" readonly='True' invisible='1'/>
+                              <field name='request_state' readonly='True'/>
+                          </tree>
+                      </field>
+                  </page>
+                  <page string="Feuille de temps" name="timesheet">
+                  </page>
+              </notebook>
+              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+              </div>
+              </sheet>
+          </form>
+      </field>
+    </record>  
+    
+    <record id="view_work_order_request_tree" model="ir.ui.view">
+        <field name="name">product.request.tree</field>
+        <field name="model">work.order</field>
+        <field name="arch" type="xml">
+            <tree string="Work Order" decoration-warning="state=='draft'" decoration-danger="state=='cancel'">
+                <field name="date"/>
+                <field name="name" string="Work Order"/>
+                <field name="requested_by"/>
+                <field name="project_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+           </tree>
+        </field>
+    </record>  
+    
+    <record model="ir.actions.act_window" id="work_order_action_window">
+      <field name="name">Workorder Request</field>
+      <field name="res_model">work.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="work_order_request.menu_root"
+        name="Workorder Request"
+        sequence="100"
+    />
+    <menuitem id="work_order_request_request"
+          name="Product Request"
+          parent="work_order_request.menu_root"
+          action="work_order_action_window"
+    />
+  </data>
+</odoo>
