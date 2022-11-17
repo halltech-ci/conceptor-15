@@ -29,7 +29,7 @@
         'data/cron.xml',
         'views/views.xml',
         'views/templates.xml',
-        'report/attendance_sheet_report.xml',
+        #'report/attendance_sheet_report.xml',
         'views/hr_attendance_sheet_views.xml',
         'views/hr_attendance_views.xml',
         'views/hr_department_views.xml',
