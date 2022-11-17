@@ -12,12 +12,12 @@ class BaseConfiguration(models.TransientModel):
         help="Set behaviour of codes. Default: Automask"
         " (depends on variant use: "
         "see Sales/Purchases configuration)",
-        implied_group="product_variant_default_code"
+        implied_group="hta_product_code"
         ".group_product_default_code_manual_mask",
     )
 
     prefix_as_default_code = fields.Boolean(
         string="Reference Prefix as default Reference",
         default=False,
-        config_parameter="product_variant_default_code.prefix_as_default_code",
+        config_parameter="hta_product_code.prefix_as_default_code",
     )
