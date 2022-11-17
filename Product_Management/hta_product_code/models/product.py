@@ -76,7 +76,7 @@ class ProductTemplate(models.Model):
     def is_automask(self):
         return bool(
             not self.user_has_groups(
-                "product_variant_default_code.group_product_default_code_manual_mask"
+                "hta_product_code.group_product_default_code_manual_mask"
             )
         )
 
@@ -147,7 +147,7 @@ class ProductTemplate(models.Model):
             not vals.get("reference_mask")
             and product.attribute_line_ids
             or not self.user_has_groups(
-                "product_variant_default_code.group_product_default_code_manual_mask"
+                "hta_product_code.group_product_default_code_manual_mask"
             )
         ):
             vals["reference_mask"] = product._get_default_mask()
