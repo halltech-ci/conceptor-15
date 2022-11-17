@@ -232,11 +232,12 @@ class ProductAttribute(models.Model):
     code = fields.Char(
         string="Attribute Code",
     )
-
+    
+    '''
     _sql_constraints = [
         ("number_uniq", "unique(name)", _("Attribute Name must be unique!"))
     ]
-    
+    '''
 
 
 class ProductAttributeValue(models.Model):
