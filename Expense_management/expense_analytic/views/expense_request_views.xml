@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+      <record id="expense_analytic_form_views" model='ir.ui.view'>
+          <field name="name">expense_analytic_form_views</field>
+          <field name="model">expense.request</field>
+          <field name='inherit_id' ref="expense_request.expense_request_view"/>
+          <field name="arch" type="xml">
+              <xpath expr="//sheet/group/group[1]/field[@name='expense_approver']" position="after">
+                  <field name="analytic_account"/>
+              </xpath>
+              <xpath expr="//sheet/notebook/page[1]/field[@name='line_ids']/tree/field[@name='amount']" position="after">
+                  <field name='analytic_account'/>
+              </xpath>
+              <xpath expr="//sheet/notebook/page[@id='aml_tab']/field[@name='statement_line_ids']/tree/field[@name='payment_ref']" position="after">
+                  <field name='analytic_account_id' string="Compte Analytique"/>
+              </xpath>
+          </field>
+      </record>
+  </data>
+</odoo>
