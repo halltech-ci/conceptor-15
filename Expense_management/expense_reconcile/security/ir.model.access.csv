@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_expense_reconcile_expense_reconcile,expense_reconcile.expense_reconcile,model_expense_reconcile_expense_reconcile,base.group_user,1,1,1,1

@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="expense_reconcile_request_view">
+         <field name="name">expense_reconcile_request_view</field>
+         <field name="model">expense.request</field>
+        <field name="inherit_id" ref="expense_request.expense_request_view"/>
+         <field name="arch" type="xml">
+             <xpath expr="//header/button[@name='action_post']" position="after">
+                 <button name="create_move_values" string="Lettrer" type="object" class="oe_highlight" states="post" groups="account.group_account_manager"/>
+             </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>
