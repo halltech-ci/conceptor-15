@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="sale_order_view_inherit">
+        <field name="name">sale.order.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          <!-- Display only service and consommable product in sale order line-->
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
+              <attribute name="domain">[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('type', 'in', ['service', 'consumable'])]</attribute>
+          </xpath>
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+              <attribute name="domain">[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('type', 'in', ['service', 'consumable'])]</attribute>
+          </xpath>
+          <!-- Remove create product in sale_order-->
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
+              <attribute name="options">{'no_create_edit': True}</attribute>
+          </xpath>
+          <!-- Remove create product in sale_order-->
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+              <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+          </xpath>
+          <!-- Adding no_create_edit for product_uom-->
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/form/group/group/div[@name='ordered_qty']/field[@name='product_uom']" position="attributes">
+              <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+          </xpath>
+          <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom']" position="attributes">
+              <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+          </xpath>
+        </field>
+    </record>
+      
+      <!--
+      <record model="ir.ui.view" id="sale_margin_sale_order_inherit">
+          <field name="name">sale_margin_sale_order_inherit</field>
+          <field name="model">sale.order</field>
+          <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+          <field name="arch" type="xml">
+              <field name="amount_untaxed" position="attributes">
+                  <attribute name="invisible">0</attribute>
+              </field>
+          </field>
+      </record>-->
+  </data>
+</odoo>
