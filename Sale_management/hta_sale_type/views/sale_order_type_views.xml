@@ -6,16 +6,14 @@
         <field name="arch" type="xml">
             <form string="Type">
                 <sheet>
-                    <div class="oe_button_box" name="button_box" />
-                    <field name="active" />
-                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                     <group>
                         <group>
                              <field name="name" />
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         <group>
+                            <field name="active" />
                             <field name="code"/>
-                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
                 </sheet>
