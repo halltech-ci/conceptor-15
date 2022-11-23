@@ -13,3 +13,4 @@ class SaleOrderType(models.Model):
     code = fields.Char()
     company_id = fields.Many2one("res.company", default=lambda self: self.env.company, store=True,)
     active = fields.Boolean(string="Active", default=True)
+    ir_sequence = fields.Many2one('ir.sequence', string="Sequence")
