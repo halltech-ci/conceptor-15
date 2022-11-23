@@ -8,7 +8,32 @@
               <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="before">
                   <field name="print_line" options="{'no_create': True}"/>
               </xpath>
+              <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                  <field name="sale_uom" options="{'no_create': True}"/>
+              </xpath>
           </field>
       </record>
+      <record id="sale_uom_form_view" model="ir.ui.view">
+          <field name="name">sale_uom_form_view</field>
+          <field name="model">sale.uom</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="code"/>
+              </tree>
+          </field>
+      </record>
+      
+      <record id="action_sale_uom_config" model="ir.actions.act_window">
+          <field name="name">Sale UOM</field>
+          <field name="res_model">sale.uom</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new sale uom
+                </p>
+            </field>
+      </record>
+      <menuitem id="sale_uom_config" name="Sale UOM" action="action_sale_uom_config" parent="sale.menu_sale_config"/>
   </data>
 </odoo>
