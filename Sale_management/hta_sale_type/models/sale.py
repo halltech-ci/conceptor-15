@@ -29,7 +29,10 @@ class SaleOrder(models.Model):
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
             seq_date = None
-            next_code = vals.get('sequence_code')
+            next_code = 'sale.order'
+            domain_code = vals.get('sequence_code')
+            if domain_code != 'sale.order':
+                next_code = domain_code
             if 'date_order' in vals:
                 seq_date = fields.Datetime.context_timestamp(self, fields.Datetime.to_datetime(vals['date_order']))
             if 'company_id' in vals:
