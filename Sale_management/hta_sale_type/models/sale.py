@@ -8,7 +8,7 @@ class SaleOrder(models.Model):
     
     
     order_type = fields.Many2one('sale.order.type', string="Domaine")
-    sequence_code = fields.Char(string='Sequence Code', default='sale.order', compute="_compute_sequence_code")
+    sequence_code = fields.Char(string='Sequence Code', default='sale.order', compute="_compute_sequence_code", store=True)
     
     @api.depends('order_type')
     def _compute_sequence_code(self):
@@ -25,7 +25,6 @@ class SaleOrder(models.Model):
         else:
             self.sequence_code = 'sale.order'
     
-    
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
@@ -38,7 +37,6 @@ class SaleOrder(models.Model):
                     next_code, sequence_date=seq_date) or _('New')
             else:
                 vals['name'] = self.env['ir.sequence'].next_by_code(next_code, sequence_date=seq_date) or _('New')
-
         # Makes sure partner_invoice_id', 'partner_shipping_id' and 'pricelist_id' are defined
         if any(f not in vals for f in ['partner_invoice_id', 'partner_shipping_id', 'pricelist_id']):
             partner = self.env['res.partner'].browse(vals.get('partner_id'))
