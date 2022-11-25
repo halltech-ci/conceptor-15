@@ -8,7 +8,7 @@ class SaleOrder(models.Model):
     
     
     order_type = fields.Many2one('sale.order.type', string="Domaine")
-    sequence_code = fields.Char(string='Sequence Code', default='sale.order', compute="_compute_sequence_code")
+    sequence_code = fields.Char(string='Sequence Code', default='sale.order',)
     
     @api.depends('order_type.ir_sequence')
     def _compute_sequence_code(self):
