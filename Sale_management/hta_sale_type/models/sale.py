@@ -8,20 +8,20 @@ class SaleOrder(models.Model):
     
     
     order_type = fields.Many2one('sale.order.type', string="Domaine")
-    sequence_code = fields.Char(string='Sequence Code', default='sale.order')
+    sequence_code = fields.Char(string='Sequence Code', default='sale.order', compute="_compute_sequence_code")
     
-    @api.depends('order_type')
+    @api.depends('order_type.ir_sequence')
     def _compute_sequence_code(self):
         for order in self:
             if order.order_type:
-                order.sequence_code = self.env['ir.sequence'].search([('code', '=', order.order_type.code)])
+                order.sequence_code = order.order_type.ir_sequence.code
             else:
                 order.sequence_code = 'sale.order'
                 
     @api.onchange('order_type')
     def _onchange_order_type(self):
         if self.order_type:
-            self.sequence_code = self.env['ir.sequence'].search([('code', '=', self.order_type.code)])
+            self.sequence_code = self.order_type.ir_sequence.code
         else:
             self.sequence_code = 'sale.order'
     

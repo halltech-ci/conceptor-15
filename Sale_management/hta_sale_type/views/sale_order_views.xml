@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/group[@name='sale_header']/group[@name='partner_details']" position='inside'>
               <field name="order_type"/>
+              <field name="sequence_code"/>
           </xpath>
         </field>
     </record>
