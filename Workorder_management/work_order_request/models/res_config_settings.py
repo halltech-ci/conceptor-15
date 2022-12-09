@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class ResConfigSttings(models.TransitModel):
+class ResConfigSttings(models.TransientModel):
     _inherit = "res.config.settings"
     
     
