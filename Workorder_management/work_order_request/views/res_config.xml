@@ -1,18 +1,19 @@
 <odoo>
   <data>
     <record id="res_config_settings_wo_view_form" model="ir.ui.view">
-        <field name="name">res.config.settings.view.form.inherit.work_order</field>
+        <field name="name">res.config.settings.form.inherit.work_order</field>
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('settings')]/div[@hasclass('app_settings_block')]" position="after">
+            <xpath expr="//div[hasclass('settings')]/div[hasclass('app_settings_block')]" position="after">
                 <h2> ORDRE DE TRAVAIL</h2>
                 <div class="row mt16 o_settings_container" name="wo_setting_container">
                     <div class="col-12 col-lg-6 o_setting_box" id='wo_stock_operation_type'>
                         <div class="o_setting_left_pane">
                             <field name="wo_picking_type"/>
                         </div>
-                        <div class="o_setting_right_pane"></div>
+                        <div class="o_setting_right_pane">
+                        </div>
                     </div>
                     <div class="col-12 col-lg-6 o_setting_box" id='wo_stock_location'>
                         <div class="o_setting_left_pane">
@@ -27,13 +28,13 @@
         </field>
       </record>
       
-      <record id="action_work_order_config" model="ir.actions.act_window">
+     <record id="action_work_order_config" model="ir.actions.act_window">
         <field name="name">Settings</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
         <field name="target">inline</field>
         <field name="context">{'module' : 'work_order'}</field>
-    </record>
+     </record>
   </data>
 </odoo>
