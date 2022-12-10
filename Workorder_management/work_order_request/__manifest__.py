@@ -30,6 +30,7 @@
         'views/work_order_views.xml',
         #data
         'data/work_order_sequence_data.xml',
+        'views/res_config.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
