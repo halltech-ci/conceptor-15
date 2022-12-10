@@ -27,7 +27,7 @@
         </field>
       </record>
       
-      <record id="action_cork_order_config" model="ir.actions.act_window">
+      <record id="action_work_order_config" model="ir.actions.act_window">
         <field name="name">Settings</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>

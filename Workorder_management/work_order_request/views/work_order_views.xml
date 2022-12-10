@@ -90,7 +90,7 @@
     />
     <menuitem id="menu_work_order_config" name="Settings" parent="work_order_request.menu_root"
         sequence="999"
-        action="action_work_order_config"
+        action="work_order_request.action_work_order_config"
         groups="base.group_system"
     />
   </data>
