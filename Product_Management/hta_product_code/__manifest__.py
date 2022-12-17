@@ -26,9 +26,12 @@
     'data': [
         'security/product_security.xml',
         #'security/ir.model.access.csv',
-        'views/views.xml',
+        #'views/views.xml',
         'views/templates.xml',
         'data/ir_config_parameter.xml',
+        "views/res_config_settings_views.xml",
+        'views/product_views.xml',
+        'views/product_attribute_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

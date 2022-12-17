@@ -47,6 +47,11 @@ class ExpenseRequest(models.Model):
                 )
         return res[0]
     
+    @api.model
+    def _get_default_name(self):
+        return self.env["ir.sequence"].next_by_code("expense.request.code")
+    
+    
     name = fields.Char(default='/', copy=False)
     date = fields.Datetime(default=fields.Datetime.now, string="Date", readonly=True)
     approve_date = fields.Datetime()
